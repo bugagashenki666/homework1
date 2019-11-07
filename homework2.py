@@ -22,7 +22,7 @@ print("Count lower =" + str(count_lower) + " count upper =" + str(count_upper))
 
 # task3 print all numbers
 print("#task3 print all numbers from string")
-s = "166666bla-bla-bla 1480000000 bla-blabla 40000 bla-bla-bla50000dfgdfgdfgd464564.5645"
+s = "166666bla-bla-bla 1480000000 bla-blabla ....40000 bla-bla-bla500...00dfgdfgdfgd464564.56....45mmmm0.7778..........."
 s = s + "\n"
 count_digit = 0
 start_digit = 0
@@ -32,5 +32,9 @@ for i in range(len(s)):
             start_digit = i
         count_digit += 1
     elif count_digit != 0:
-        print(float(s[start_digit:start_digit + count_digit]))
+        result_s = s[start_digit:start_digit + count_digit]
+        while result_s[-1] == '.':
+            result_s = result_s[0:-1]
+        result_s = result_s.replace(".",'', result_s.count('.') - 1)
+        print(float(result_s))
         count_digit = 0
