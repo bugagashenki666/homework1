@@ -26,6 +26,7 @@ s = "166666bla-bla-bla 1480000000 bla-blabla ....40000 bla-bla-bla500...00dfgdfg
 s = s + "\n"
 count_digit = 0
 start_digit = 0
+flag_reverse_deleting_point = True
 for i in range(len(s)):
     if s[i].isdigit() or (s[i] == '.' and count_digit > 0):
         if count_digit == 0:
@@ -35,6 +36,10 @@ for i in range(len(s)):
         result_s = s[start_digit:start_digit + count_digit]
         while result_s[-1] == '.':
             result_s = result_s[0:-1]
+        if flag_reverse_deleting_point:
+            result_s = result_s[-1:-len(result_s) - 1:-1]
         result_s = result_s.replace(".",'', result_s.count('.') - 1)
+        if flag_reverse_deleting_point:
+            result_s = result_s[-1:-len(result_s) - 1:-1]
         print(float(result_s))
         count_digit = 0
